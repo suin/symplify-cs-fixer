@@ -1,5 +1,5 @@
 {
-    "name": "suin/php-cs-fixer-symplify-coding-standard-bridge",
+    "name": "suin/symplify-cs-fixer",
     "type": "library",
     "description": "Make Symplify Coding Standard's fixers work with PHP-CS-Fixer",
     "keywords": [
