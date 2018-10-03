@@ -1,0 +1,45 @@
+{
+    "name": "suin/php-cs-fixer-symplify-coding-standard-bridge",
+    "type": "library",
+    "description": "Make Symplify Coding Standard's fixers work with PHP-CS-Fixer",
+    "keywords": [
+        "coding-standards",
+        "coding-style",
+        "php-cs-fixer",
+        "static-analysis",
+        "symplify-coding-standard"
+    ],
+    "homepage": "https://github.com/suin/php",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "suin",
+            "email": "suinyeze@gmail.com",
+            "homepage": "https://github.com/suin",
+            "role": "Developer"
+        }
+    ],
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "support": {
+        "issues": "https://github.com/suin/php/issues"
+    },
+    "require": {
+        "php": ">=7.1 <7.4.0",
+        "symplify/coding-standard": ">=5.0 <6.0.0",
+        "symplify/easy-coding-standard": ">=5.0 <6.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "SymplifyCsFixer\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "SymplifyCsFixer\\": "tests"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    }
+}

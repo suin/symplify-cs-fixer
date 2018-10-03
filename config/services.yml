@@ -1,0 +1,82 @@
+services:
+  _defaults:
+    public: true
+    autowire: true
+
+  standalone_line_in_multiline_array:
+    class: SymplifyCsFixer\Unconfigurable
+    arguments:
+      - '@Symplify\CodingStandard\Fixer\ArrayNotation\StandaloneLineInMultilineArrayFixer'
+  Symplify\CodingStandard\Fixer\ArrayNotation\StandaloneLineInMultilineArrayFixer:
+
+  block_property_comment:
+    class: SymplifyCsFixer\Unconfigurable
+    arguments:
+      - '@Symplify\CodingStandard\Fixer\Commenting\BlockPropertyCommentFixer'
+  Symplify\CodingStandard\Fixer\Commenting\BlockPropertyCommentFixer:
+
+  remove_empty_doc_block:
+    class: SymplifyCsFixer\Unconfigurable
+    arguments:
+      - '@Symplify\CodingStandard\Fixer\Commenting\RemoveEmptyDocBlockFixer'
+  Symplify\CodingStandard\Fixer\Commenting\RemoveEmptyDocBlockFixer:
+
+  remove_superfluous_doc_block_whitespace:
+    class: SymplifyCsFixer\Unconfigurable
+    arguments:
+      - '@Symplify\CodingStandard\Fixer\Commenting\RemoveSuperfluousDocBlockWhitespaceFixer'
+  Symplify\CodingStandard\Fixer\Commenting\RemoveSuperfluousDocBlockWhitespaceFixer:
+
+  remove_useless_doc_block:
+    class: SymplifyCsFixer\Unconfigurable
+    arguments:
+      - '@Symplify\CodingStandard\Fixer\Commenting\RemoveUselessDocBlockFixer'
+  Symplify\CodingStandard\Fixer\Commenting\RemoveUselessDocBlockFixer:
+
+  require_followed_by_absolute_path:
+    class: SymplifyCsFixer\Unconfigurable
+    arguments:
+      - '@Symplify\CodingStandard\Fixer\ControlStructure\RequireFollowedByAbsolutePathFixer'
+  Symplify\CodingStandard\Fixer\ControlStructure\RequireFollowedByAbsolutePathFixer:
+
+  line_length:
+    class: SymplifyCsFixer\Configurable
+    arguments:
+      - '@Symplify\CodingStandard\Fixer\LineLength\LineLengthFixer'
+  Symplify\CodingStandard\Fixer\LineLength\LineLengthFixer:
+
+  property_name_matching_type:
+    class: SymplifyCsFixer\Configurable
+    arguments:
+      - '@Symplify\CodingStandard\Fixer\Naming\PropertyNameMatchingTypeFixer'
+  Symplify\CodingStandard\Fixer\Naming\PropertyNameMatchingTypeFixer:
+
+  method_order_by_type:
+    class: SymplifyCsFixer\Configurable
+    arguments:
+      - '@Symplify\CodingStandard\Fixer\Order\MethodOrderByTypeFixer'
+  Symplify\CodingStandard\Fixer\Order\MethodOrderByTypeFixer:
+
+  class_string_to_class_constant:
+    class: SymplifyCsFixer\Configurable
+    arguments:
+      - '@Symplify\CodingStandard\Fixer\Php\ClassStringToClassConstantFixer'
+  Symplify\CodingStandard\Fixer\Php\ClassStringToClassConstantFixer:
+
+  array_property_default_value:
+    class: SymplifyCsFixer\Unconfigurable
+    arguments:
+      - '@Symplify\CodingStandard\Fixer\Property\ArrayPropertyDefaultValueFixer'
+  Symplify\CodingStandard\Fixer\Property\ArrayPropertyDefaultValueFixer:
+
+  final_interface:
+    class: SymplifyCsFixer\Configurable
+    arguments:
+      - '@Symplify\CodingStandard\Fixer\Solid\FinalInterfaceFixer'
+  Symplify\CodingStandard\Fixer\Solid\FinalInterfaceFixer:
+
+  blank_line_after_strict_types:
+    class: SymplifyCsFixer\Unconfigurable
+    arguments:
+      - '@Symplify\CodingStandard\Fixer\Strict\BlankLineAfterStrictTypesFixer'
+  Symplify\CodingStandard\Fixer\Strict\BlankLineAfterStrictTypesFixer:
