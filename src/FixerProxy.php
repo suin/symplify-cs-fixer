@@ -61,7 +61,6 @@ abstract class FixerProxy implements FixerInterface
         $ruleName = \preg_replace('/^.+\\\\(.+)Fixer$/', '$1', $className);
         $ruleName = \preg_replace('/([A-Z])/', '_$1', $ruleName);
         $ruleName = \ltrim($ruleName, '_');
-        $ruleName = \strtolower($ruleName);
-        return $ruleName;
+        return \strtolower($ruleName);
     }
 }
