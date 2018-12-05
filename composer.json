@@ -26,6 +26,7 @@
     },
     "require": {
         "php": ">=7.1 <7.4.0",
+        "symfony/finder": ">=4.2 <5.0.0",
         "symplify/coding-standard": ">=5.0 <6.0.0",
         "symplify/easy-coding-standard": ">=5.0 <6.0.0"
     },

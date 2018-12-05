@@ -5,7 +5,7 @@ Make [Symplify Coding Standard]'s fixers work with [PHP-CS-Fixer].
 [Symplify Coding Standard]: https://github.com/Symplify/CodingStandard
 [PHP-CS-Fixer]: https://github.com/FriendsOfPHP/PHP-CS-Fixer
 
-Since Symplify Coding Standard's fixers designed for [EasyCodingStandard], its don't work in PHP-CS-Fixer config (`.php_cs` or `.php_cs.dist`). This library provide an adaptor layer that brige the gap between PHP-CS-Fixer and Symplify Coding Standard.
+Since Symplify Coding Standard's fixers designed for [EasyCodingStandard], its don't work in PHP-CS-Fixer config (`.php_cs` or `.php_cs.dist`). This library provide an adaptor layer that bridge the gap between PHP-CS-Fixer and Symplify Coding Standard.
 
 [EasyCodingStandard]: https://github.com/Symplify/EasyCodingStandard 
 
@@ -24,54 +24,35 @@ At first, create a PHP-CS-Fixer ruleset XML (`.php_cs.dist` or `.php_cs`) file i
 
 declare(strict_types=1);
 
-use SymplifyCsFixer\SymplifyFixers;
-
-$symplifyFixers = new SymplifyFixers();
-
 return PhpCsFixer\Config::create()
-    ->registerCustomFixers(
-        [
-            $symplifyFixers('standalone_line_in_multiline_array'),
-            $symplifyFixers('block_property_comment'),
-            $symplifyFixers('remove_empty_doc_block'),
-            $symplifyFixers('remove_superfluous_doc_block_whitespace'),
-            $symplifyFixers('remove_useless_doc_block'),
-            $symplifyFixers('require_followed_by_absolute_path'),
-            $symplifyFixers('line_length'),
-            $symplifyFixers('property_name_matching_type'),
-            $symplifyFixers('method_order_by_type'),
-            $symplifyFixers('class_string_to_class_constant'),
-            $symplifyFixers('array_property_default_value'),
-            $symplifyFixers('final_interface'),
-            $symplifyFixers('blank_line_after_strict_types'),
-        ]
-    )
+    ->registerCustomFixers(new SymplifyCsFixer\SymplifyCsFixers())
     ->setRules(
         [
-            ... other rules ...
-            'Symplify/standalone_line_in_multiline_array' => true,
-            'Symplify/block_property_comment' => true,
-            'Symplify/remove_empty_doc_block' => true,
-            'Symplify/remove_superfluous_doc_block_whitespace' => true,
-            'Symplify/remove_useless_doc_block' => true,
-            'Symplify/require_followed_by_absolute_path' => true,
-            'Symplify/line_length' => [
+            SymplifyCsFixer\ArrayPropertyDefaultValueFixer::NAME => true,
+            SymplifyCsFixer\BlankLineAfterStrictTypesFixer::NAME => true,
+            SymplifyCsFixer\BlockPropertyCommentFixer::NAME => true,
+            SymplifyCsFixer\ClassStringToClassConstantFixer::NAME => true,
+            SymplifyCsFixer\FinalInterfaceFixer::NAME => true,
+            SymplifyCsFixer\LineLengthFixer::NAME => [
                 'line_length' => 80,
                 'break_long_lines' => true,
                 'inline_short_lines' => true,
             ],
-            'Symplify/property_name_matching_type' => true,
-            'Symplify/method_order_by_type' => true,
-            'Symplify/class_string_to_class_constant' => true,
-            'Symplify/array_property_default_value' => true,
-            'Symplify/final_interface' => true,
-            'Symplify/blank_line_after_strict_types' => true,
+            SymplifyCsFixer\MethodOrderByTypeFixer::NAME => true,
+            SymplifyCsFixer\ParamReturnAndVarTagMalformsFixer::NAME => true,
+            SymplifyCsFixer\PrivateMethodOrderByUseFixer::NAME => true,
+            SymplifyCsFixer\PropertyNameMatchingTypeFixer::NAME => true,
+            SymplifyCsFixer\PropertyOrderByComplexityFixer::NAME => true,
+            SymplifyCsFixer\RemoveEmptyDocBlockFixer::NAME => true,
+            SymplifyCsFixer\RemoveEndOfFunctionCommentFixer::NAME => true,
+            SymplifyCsFixer\RemoveSuperfluousDocBlockWhitespaceFixer::NAME => true,
+            SymplifyCsFixer\RemoveUselessDocBlockFixer::NAME => true,
+            SymplifyCsFixer\RequireFollowedByAbsolutePathFixer::NAME => true,
+            SymplifyCsFixer\StandaloneLineInMultilineArrayFixer::NAME => true,  
         ]
     )
-    ->setFinder(
-        ...
-    );
-
+    // ...
+    ;
 ```
 
 Then run it with the command:

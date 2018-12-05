@@ -2,22 +2,29 @@
 
 declare(strict_types=1);
 
-namespace SymplifyCsFixer;
+namespace SymplifyCsFixer\Proxy;
 
+use PhpCsFixer\Fixer\DefinedFixerInterface;
 use PhpCsFixer\Fixer\FixerInterface;
+use PhpCsFixer\FixerDefinition\FixerDefinitionInterface;
 use PhpCsFixer\Tokenizer\Tokens;
 use SplFileInfo;
+use SymplifyCsFixer\Container\Container;
 
-abstract class FixerProxy implements FixerInterface
+abstract class FixerProxy implements DefinedFixerInterface
 {
+    public const NAME = '';
+
+    protected const ORIGINAL_FIXER_CLASS = '';
+
     /**
-     * @var FixerInterface
+     * @var DefinedFixerInterface
      */
     private $fixer;
 
-    public function __construct(FixerInterface $fixer)
+    final public function __construct()
     {
-        $this->fixer = $fixer;
+        $this->fixer = self::getFixerFromContainer();
     }
 
     final public function isCandidate(Tokens $tokens): bool
@@ -37,7 +44,7 @@ abstract class FixerProxy implements FixerInterface
 
     final public function getName(): string
     {
-        return 'Symplify/' . $this->getRuleName();
+        return static::NAME;
     }
 
     final public function getPriority(): int
@@ -50,17 +57,18 @@ abstract class FixerProxy implements FixerInterface
         return $this->fixer->supports($file);
     }
 
-    protected function fixer(): FixerInterface
+    final public function getDefinition(): FixerDefinitionInterface
+    {
+        return $this->fixer->getDefinition();
+    }
+
+    final protected function getFixer(): FixerInterface
     {
         return $this->fixer;
     }
 
-    private function getRuleName(): string
+    private static function getFixerFromContainer(): DefinedFixerInterface
     {
-        $className = \get_class($this->fixer);
-        $ruleName = \preg_replace('/^.+\\\\(.+)Fixer$/', '$1', $className);
-        $ruleName = \preg_replace('/([A-Z])/', '_$1', $ruleName);
-        $ruleName = \ltrim($ruleName, '_');
-        return \strtolower($ruleName);
+        return Container::get(static::ORIGINAL_FIXER_CLASS);
     }
 }
